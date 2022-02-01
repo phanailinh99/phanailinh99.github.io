@@ -82,7 +82,100 @@ body.custom-background { background-color: #ffffff; }
 <meta name="msapplication-TileImage" content="https://builder.simplepage.vn/wp-content/uploads/2020/06/cropped-logo-min-blue-1-270x270.png">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"></head>
 <body class="page-template page-template-elementor_canvas page page-id-578759 logged-in custom-background wp-embed-responsive singular enable-search-modal missing-post-thumbnail has-no-pagination not-showing-comments show-avatars elementor_canvas footer-top-visible reduced-spacing elementor-default elementor-template-canvas elementor-kit-216867 elementor-page elementor-page-578759 elementor-578759" data-elementor-device-mode="mobile">
-			<div class="elementor-inner">
+<---------------code trang trí------------------>
+	<div class="ad_top_39054"></div>
+<script defer>
+"use strict";
+{
+    const num_of_hearts = 5;
+    const driftX = 50;
+    const gravity = 100;
+    const update_speed = 900;
+    const heartTypes = [..."♥💕💓💔💖💗💘💝💞💟💙💚💛💜"];
+    const viewportWidth = document.documentElement.clientWidth;
+    const viewportHeight = document.documentElement.clientHeight;
+    const viewSpaceWidth = viewportWidth + 50;
+    const viewSpaceHeight = viewportHeight + 50;
+    const randomInt = ((xmin, xmax) => (Math.floor(Math.random() * (xmax + 1 - xmin) + xmin)));
+    const randomReal = ((xmin, xmax) => (Math.random() * (xmax - xmin) + xmin));
+    const randomColor = (() => ("hsla" + "(" + randomInt(0, 360) + "," +
+        randomInt(70, 100) + "%," +
+        randomInt(40, 60) + "%," +
+        randomReal(.8, 1) + ")"));
+    const f_restart_heart = ((xx) => {
+        xx["xxleft"] = randomInt(0, viewSpaceWidth);
+        xx.style.left = xx["xxleft"] + "px";
+        xx["xxtop"] = randomInt(0, viewSpaceHeight) - viewSpaceHeight;
+        xx.style.top = xx["xxtop"] + "px";
+        xx["xrotate"] = randomInt(-150, 150);
+        xx.style.transform = "rotate(" + xx["xrotate"] + "deg)";
+    });
+    const heart_box = document.createElement("div");
+    heart_box.setAttribute("id", "heart_box");
+    const f_new_heart = (() => {
+        const yy = document.createElement("div");
+        yy.textContent = heartTypes[Math.floor(Math.random() * heartTypes.length)];
+        yy["xxleft"] = randomInt(0, viewSpaceWidth);
+        yy.style.left = yy["xxleft"] + "px";
+        yy["xxtop"] = -90;
+        yy.style.top = yy["xxtop"] + "px";
+        yy["xrotate"] = randomInt(-150, 150);
+        yy.style.transform = "rotate(" + yy["xrotate"] + "deg)";
+        yy.style.color = randomColor();
+        yy["xsize"] = 10 + randomInt(0, 30);
+        yy.style.fontSize = yy["xsize"] + "px";
+        yy.style.position = "fixed";
+        yy.style.zIndex = randomInt(100, 9999).toString();
+        yy.style.transition = "top linear 1.5s, left linear 1.5s, transform linear 1.5s";
+        // f_restart_heart(yy);
+        return yy;
+    });
+    {
+        for (let i = 0; i < num_of_hearts; i++) {
+            heart_box.appendChild(f_new_heart());
+        }
+    }
+    ;
+    document.body.appendChild(heart_box);
+    const heartNodes = Array.from(heart_box.children);
+    const f_update_positions = (() => {
+        heartNodes.forEach(((xx) => {
+            xx["xxleft"] +=
+                (() => {
+                    const rnd = Math.random();
+                    if (rnd < 0.3333) {
+                        return 0;
+                    }
+                    else if (rnd < 0.6666) {
+                        return driftX;
+                    }
+                    else {
+                        return -driftX;
+                    }
+                })();
+            xx["xxtop"] = xx["xxtop"] + ((xx["xsize"] / 20) * (gravity));
+            if (xx["xxtop"] > (viewSpaceHeight) + viewSpaceHeight / 10) {
+                f_restart_heart(xx);
+            }
+            else {
+                xx["xxtop"] = xx["xxtop"] + gravity / 10 * randomInt(0, 10);
+            }
+            ;
+            if (xx["xrotate"] !== 0) {
+                xx["xrotate"] = xx["xrotate"] + randomInt(-30, 60);
+                xx.style.transform = "rotate(" + xx["xrotate"] + "deg)";
+            }
+            ;
+            xx.style.left = xx["xxleft"] + "px";
+            xx.style.top = xx["xxtop"] + "px";
+        }));
+    });
+    setInterval(f_update_positions, update_speed);
+}
+;
+</script>
+	<---------------------------het code trang trí--------------->
+	<div class="elementor-inner">
 				<div class="elementor-section-wrap">
 							<section class="elementor-element elementor-element-2466ca3 bdt-particles-yes elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="2466ca3" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}"><div id="bdt-particle-container-2466ca3" class="bdt-particle-container"><canvas class="particles-js-canvas-el" style="width: 100%; height: 100%;" width="400" height="1106"></canvas></div>
 							<div class="elementor-background-overlay"></div>
